@@ -1,11 +1,12 @@
-const { urlencoded } = require("express");
+// const { urlencoded } = require("express");
 const express = require("express");
 const fs = require("fs");
-const { get } = require("http");
-const path = require("path");
+// const { get } = require("http");
+// const path = require("path");
 const filePath = "teacher.json";
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,7 +35,7 @@ app.get("/teachers", (req, res) => {
   const data = ReadingFile(filePath, "utf-8");
   console.log(data);
   res.send("object returned");
-  console.log("object returned");
+  // console.log("object returned");
 });
 
 // app.get("/teachers", (req, res) => {
@@ -94,9 +95,17 @@ app.get("/teacher/:id", (req, res) => {
     }
     // console.log(data[i].id);
   }
+
+  let result = {
+    id: data2[0].id,
+    name : data2[0].name,
+    department : data2[0].department
+  }
   console.log(data2);
-  res.end();
+  console.log(result);
+  res.send(result);
 });
+
 
 // deleting the id from the data
 app.delete("/teacher/:id", (req, res) => {
