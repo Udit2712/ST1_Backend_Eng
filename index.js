@@ -133,6 +133,7 @@ app.delete("/teacher/:id", (req, res) => {
   res.end();
 });
 
+//adding the data in the json file
 let arr_id = [];
 app.post("/teacher", (req, res) => {
   let gen_id = getRandomIntInclusive(1, 1000);
@@ -150,6 +151,7 @@ app.post("/teacher", (req, res) => {
   for (let i in data) {
     temp.push(data[i].id);
   }
+  // [1,3,6];
   console.log(temp);
   while (flag) {
     let present = temp.find((check_id) => {
